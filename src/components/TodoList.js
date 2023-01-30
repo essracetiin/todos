@@ -36,8 +36,10 @@ function TodoList() {
     });
     setTodos(updatedTodos);
   };
+
   return (
     <div>
+      <button class="btn btn-outline-light mt-1 mb-1"><a href="/">Sign Out</a></button>
       <h1>What's the Plan for Today?</h1>
       <TodoForm onSubmit={addTodo} />
       <Todo

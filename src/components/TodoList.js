@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TodoForm from "./TodoForm";
 import Todo from "./Todo";
+import { addTodo, getTodos } from "../firebase";
 
 function TodoList() {
   const [todos, setTodos] = useState([]);
@@ -39,7 +40,7 @@ function TodoList() {
 
   return (
     <div>
-      <button class="btn btn-outline-light mt-1 mb-1"><a href="/">Sign Out</a></button>
+      <button className="btn btn-outline-light mt-1 mb-1"><a href="/">Sign Out</a></button>
       <h1>What's the Plan for Today?</h1>
       <TodoForm onSubmit={addTodo} />
       <Todo

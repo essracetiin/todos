@@ -16,21 +16,21 @@ function Register() {
   };
 
   return (
-    <div class="row my-auto">
-      <div class="col-sm-10 mx-auto border border-primary mt-5 pt-2">
+    <div className="row my-auto">
+      <div className="col-sm-10 mx-auto border border-primary mt-5 pt-2">
         <h3 style={{ color: "white" }}>Register</h3>
         <hr style={{ border: "1px solid #0D6EFD" }} />
-        <div class="col-sm-10 mx-auto">
+        <div className="col-sm-10 mx-auto">
           <form onSubmit={handleSubmit}>
             <div>
-              <label for="exampleInputEmail1" class="form-label text-white">
+              <label htmlFor="exampleInputEmail1" className="form-label text-white">
                 Email address
               </label>
               <input
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 type="email"
-                class="form-control bg-primary-subtle"
+                className="form-control bg-primary-subtle"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 placeholder="example@example.com"
@@ -38,14 +38,14 @@ function Register() {
             </div>
             <div>
               <label
-                for="exampleInputPassword1"
-                class="form-label text-white mt-2"
+                htmlFor="exampleInputPassword1"
+                className="form-label text-white mt-2"
               >
                 Password
               </label>
               <input
                 type="password"
-                class="form-control bg-primary-subtle"
+                className="form-control bg-primary-subtle"
                 id="exampleInputPassword1"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
@@ -54,7 +54,7 @@ function Register() {
             <button
               disabled={!email || !password}
               type="submit"
-              class="btn btn-primary m-3"
+              className="btn btn-primary m-3"
             >
               Register
             </button>

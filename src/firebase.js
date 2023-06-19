@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
+import { getFirestore, collection, addDoc, getDocs, setDoc } from "firebase/firestore";
 import { toast } from "react-hot-toast";
 
 const firebaseConfig = {
@@ -19,6 +20,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
+const db = getFirestore();
 
 export const register = async (email, password) => {
   try {
@@ -49,6 +51,33 @@ export const logout = async () => {
     return true;
   } catch (error) {
     toast.error(error.message);
+  }
+};
+
+export const addTodo = async (userId, todo) => {
+  try {
+    const todoRef = collection(db, "todos");
+    await addDoc(todoRef, { userId, todo });
+    toast.success('Todo added successfully!');
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+
+export const getTodos = async (userId) => {
+  try {
+    const todosRef = collection(db, "todos");
+    const querySnapshot = await getDocs(todosRef);
+    const todos = [];
+    querySnapshot.forEach((doc) => {
+      if (doc.data().userId === userId) {
+        todos.push({ id: doc.id, ...doc.data().todo });
+      }
+    });
+    return todos;
+  } catch (error) {
+    toast.error(error.message);
+    return [];
   }
 };
 
